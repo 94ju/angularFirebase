@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ServerService } from './server.service';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent {
       status:"Online"
     }
   ]
+  constructor(private serverService:ServerService){}
 
   onAddServer(sname){
     this.servers.push(
@@ -30,6 +32,14 @@ export class AppComponent {
         status:"onling"
       }
     );
-    console.log(sname)
+    console.log(sname);
+    this.serverService.storeService(this.servers).
+      subscribe(
+        (response)=>console.log(response),
+        (error)=>console.log(error)
+      )
+    ;
   }
+
+  
 }
