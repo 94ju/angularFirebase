@@ -18,11 +18,22 @@ export class ServerService {
         {headers: headers}
         );
     }
+    getAppName(){
+        return this.http.get('https://angularhttp-bea00.firebaseio.com/appName.json').pipe(map(
+            (response:Response)=>{
+                const data =response.json();
+                return data;
+            }
+        ))
+    }
     getServers(){
         return this.http.get('https://angularhttp-bea00.firebaseio.com/data.json').pipe(
             map(
                 (response:Response)=> {
                     const data =response.json();
+                    for(const server of data){
+                        server.name='Fetched '+ server.name;
+                    }
                     return data;
                 }
             )

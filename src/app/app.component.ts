@@ -9,6 +9,7 @@ import {Response} from '@angular/http'
 })
 export class AppComponent {
   title = 'angularWithFirebase';
+  appName= this.serverService.getAppName();;
 
   servers=[
     {
@@ -24,7 +25,9 @@ export class AppComponent {
       status:"Online"
     }
   ]
-  constructor(private serverService:ServerService){}
+  constructor(private serverService:ServerService){
+   
+  }
 
   onAddServer(sname){
     this.servers.push(
@@ -45,6 +48,7 @@ export class AppComponent {
     this.serverService.getServers().
       subscribe(
         (servers:any[])=>{ 
+          this.servers=servers;
         console.log(servers);
         }
         ,
