@@ -7,4 +7,29 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularWithFirebase';
+
+  servers=[
+    {
+      name:"A",
+      status:"Online"
+    },
+    {
+      name:"B",
+      status:"Online" 
+    },
+    {
+      name:"C",
+      status:"Online"
+    }
+  ]
+
+  onAddServer(sname){
+    this.servers.push(
+      {
+        name:sname,
+        status:"onling"
+      }
+    );
+    console.log(sname)
+  }
 }
