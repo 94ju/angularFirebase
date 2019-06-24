@@ -2,6 +2,7 @@
   <div class="row">
     <input type="text" #serverName >
     <button class="btn btn-success" (click)="onAddServer(serverName.value)" style="margin-left: 2%">Add server</button>
+    <button class="btn btn-primary" (click)="onGetServer()">Get Serves</button>
     <hr>
     <ul class="list-group" *ngFor="let server of servers; let i= index">
       <li class="list-group-item" >{{server.name}}({{i}})</li>
